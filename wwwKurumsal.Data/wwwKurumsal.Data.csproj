@@ -81,6 +81,7 @@
     <Compile Include="DbModel\Categories.cs" />
     <Compile Include="DbModel\FixedPages.cs" />
     <Compile Include="DbModel\Products.cs" />
+    <Compile Include="DbModel\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbModel\Users.cs" />
   </ItemGroup>

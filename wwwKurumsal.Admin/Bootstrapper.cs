@@ -23,6 +23,7 @@ namespace wwwKurumsal.Admin
             container.RegisterType<IFixedPagesRepository, FixedPagesRepository>(); 
             container.RegisterType<IProductsRepository, ProductsRepository>(); 
             container.RegisterType<ICategoriesRepository, CategoriesRepository>();
+            container.RegisterType<ISettingsRepository, SettingsRepository>();
 
             return container;
         }
