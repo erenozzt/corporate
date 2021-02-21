@@ -15,7 +15,7 @@ namespace wwwKurumsal.Admin.Controllers
 
         public PagesController(IFixedPagesRepository fixedPagesRepository)
         {
-            _fixedPagesRepository = fixedPagesRepository; 
+            _fixedPagesRepository = fixedPagesRepository;
         }
         public ActionResult Index()
         {
@@ -35,13 +35,13 @@ namespace wwwKurumsal.Admin.Controllers
             }
             if (Request.Files.Count > 0)
             {
-                string randomImageName = "-" + Guid.NewGuid() +"-";
+                string randomImageName = "-" + Guid.NewGuid() + "-";
                 string fileName = Path.GetFileName(Request.Files[0].FileName);
-                string path = "/Static/Images/Fixed/" + randomImageName+fileName;
+                string path = "/Static/Images/Fixed/" + randomImageName + fileName;
                 Request.Files[0].SaveAs(Server.MapPath(path));
                 pages.ImagePath = path;
             }
-            _fixedPagesRepository.AddFixedPage(pages.Title, pages.Description,pages.ImagePath);
+            _fixedPagesRepository.AddFixedPage(pages.Title, pages.Description, pages.ImagePath);
             return RedirectToAction("Index", "Pages");
         }
         public ActionResult EditFixed(int Id)
@@ -58,10 +58,10 @@ namespace wwwKurumsal.Admin.Controllers
             if (!ModelState.IsValid)
                 return HttpNotFound();
             else
-            {  
+            {
                 if (Request.Files[0].ContentLength > 0 && Request.Files[0] != null)
                 {
-                    string randomImageName =Guid.NewGuid() + "-";
+                    string randomImageName = Guid.NewGuid() + "-";
                     string fileName = Path.GetFileName(Request.Files[0].FileName);
                     string path = "/Static/Images/Fixed/" + randomImageName + fileName;
                     Request.Files[0].SaveAs(Server.MapPath(path));
@@ -75,12 +75,9 @@ namespace wwwKurumsal.Admin.Controllers
         [HttpPost]
         public JsonResult DeleteFixed(int Id)
         {
-            var fixedPage = _fixedPagesRepository.GetById(Id);
-            if (fixedPage !=null)
-            {
-                _fixedPagesRepository.Delete(Id);
-            } 
-            return Json(fixedPage,JsonRequestBehavior.AllowGet);
+            _fixedPagesRepository.Delete(Id);
+
+            return Json(JsonRequestBehavior.AllowGet);
         }
     }
 }

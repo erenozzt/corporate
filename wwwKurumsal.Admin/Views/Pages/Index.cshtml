@@ -79,18 +79,23 @@
         </div>
     </div>
 </div>
+ 
 
 <script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript"> 
+
+    var Id;
+    $(document).on('click', '.deleteRow', function () {
+        Id = $(this).data('id');
+    })
 
     $(function () {
+        var _url = "/Pages/DeleteFixed/";
         $('.btnDelete').click(function () {
-            var id = $('.deleteRow').data('id');
-            var _url = "/Pages/DeleteFixed/";
             $.ajax({
                 type: "POST",
-                url: _url + id,
+                url: _url + Id,
                 success: function () {
                     setTimeout(function () { location.reload(); }, 1000);
                 },
