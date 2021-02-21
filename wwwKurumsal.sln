@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wwwKurumsal.Admin", "wwwKurumsal.Admin\wwwKurumsal.Admin.csproj", "{9C28E4A5-B982-45E0-8856-9F05E9FFB3F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wwwKurumsal.Core", "wwwKurumsal.Core\wwwKurumsal.Core.csproj", "{0EE22D43-029C-4F98-ACAD-24CC88D74AC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wwwKurumsal.Data", "wwwKurumsal.Data\wwwKurumsal.Data.csproj", "{DA746876-C6AB-4CDF-B3DB-76F8C9F25BE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C28E4A5-B982-45E0-8856-9F05E9FFB3F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C28E4A5-B982-45E0-8856-9F05E9FFB3F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C28E4A5-B982-45E0-8856-9F05E9FFB3F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C28E4A5-B982-45E0-8856-9F05E9FFB3F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE22D43-029C-4F98-ACAD-24CC88D74AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE22D43-029C-4F98-ACAD-24CC88D74AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE22D43-029C-4F98-ACAD-24CC88D74AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE22D43-029C-4F98-ACAD-24CC88D74AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA746876-C6AB-4CDF-B3DB-76F8C9F25BE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA746876-C6AB-4CDF-B3DB-76F8C9F25BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA746876-C6AB-4CDF-B3DB-76F8C9F25BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA746876-C6AB-4CDF-B3DB-76F8C9F25BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+		SolutionGuid = {6F6A8F5A-BFFC-4CE3-AB5C-FB1CA50A0C27}
+	EndGlobalSection
+EndGlobal
