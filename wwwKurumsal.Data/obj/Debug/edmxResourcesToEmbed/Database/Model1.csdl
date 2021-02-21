@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KurumsalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoleRelations" Relationship="Self.FK_UserRoleRelations_Roles" FromRole="Roles" ToRole="UserRoleRelations" />
+  </EntityType>
+  <EntityType Name="UserRoleRelations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_UserRoleRelations_Roles" FromRole="UserRoleRelations" ToRole="Roles" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_UserRoleRelations_Users" FromRole="UserRoleRelations" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoleRelations" Relationship="Self.FK_UserRoleRelations_Users" FromRole="Users" ToRole="UserRoleRelations" />
+  </EntityType>
+  <Association Name="FK_UserRoleRelations_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="UserRoleRelations" Type="Self.UserRoleRelations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoleRelations">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoleRelations_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserRoleRelations" Type="Self.UserRoleRelations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRoleRelations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KurumsalEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="UserRoleRelations" EntityType="Self.UserRoleRelations" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_UserRoleRelations_Roles" Association="Self.FK_UserRoleRelations_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UserRoleRelations" EntitySet="UserRoleRelations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoleRelations_Users" Association="Self.FK_UserRoleRelations_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoleRelations" EntitySet="UserRoleRelations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

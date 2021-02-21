@@ -1,0 +1,103 @@
+﻿@model IEnumerable<wwwKurumsal.Data.DbModel.FixedPages>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9">
+            <h1>Sabit Sayfalar</h1>
+        </div>
+ 
+        <div class="col-lg-3">
+            <h1>@Html.ActionLink("Sabit Sayfa Ekle", "Fixed", "Pages", null, new { @class = "btn btn-success" })  </h1>  @*@style = "width:100px; color: red;"*@
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Başlık
+                    </th>
+                    <th>
+                        Açıklama
+                    </th>
+                    <th>
+                        Resim
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+
+                            @Html.Raw(item.Description)
+                        </td>
+                        <td>
+                            <img src="@item.ImagePath" width="120" height="120" alt="@item.Title" />
+                        </td>
+                        <td>
+                          
+                            <a class="btn btn-primary" href="/Pages/EditFixed/@item.Id">Detay</a>
+                            <a class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModal" data-id="@item.Id">SİL</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">
+                    Bu sayfayı silmek üzeresiniz!
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               Silmek istediğinize emin misiniz ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                <a onclick="#" class="btn btn-primary btnDelete">Onayla</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $('.btnDelete').click(function () {
+            var id = $('.deleteRow').data('id');
+            var _url = "/Pages/DeleteFixed/";
+            $.ajax({
+                type: "POST",
+                url: _url + id,
+                success: function () {
+                    setTimeout(function () { location.reload(); }, 1000);
+                },
+                error: function () {
+                    alert("Silerken hata oluştu.");
+                }
+            })
+        })
+    })
+</script>
