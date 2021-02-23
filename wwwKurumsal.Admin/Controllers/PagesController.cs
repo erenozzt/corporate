@@ -30,9 +30,7 @@ namespace wwwKurumsal.Admin.Controllers
         public ActionResult Fixed(FixedPages pages)
         {
             if (!ModelState.IsValid)
-            {
                 return HttpNotFound();
-            }
             if (Request.Files.Count > 0)
             {
                 string randomImageName = "-" + Guid.NewGuid() + "-";

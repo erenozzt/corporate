@@ -84,6 +84,7 @@
     <Compile Include="DbModel\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbModel\Users.cs" />
+    <Compile Include="ViewModel\ProductCategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

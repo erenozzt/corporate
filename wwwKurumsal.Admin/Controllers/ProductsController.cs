@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using wwwKurumsal.Core.Interfaces;
+using wwwKurumsal.Data.DbModel;
 
 namespace wwwKurumsal.Admin.Controllers
 {
@@ -19,12 +20,22 @@ namespace wwwKurumsal.Admin.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var allProducts = _productsRepository.GetAllProducts(); 
+            return View(allProducts);
         }
         public ActionResult CreateProduct()
         {
-            ViewBag.Categories = _categoriesRepository.GetAllCategories();
+            ViewBag.Categories = _categoriesRepository.GetAllCategories().Select(s=>new SelectListItem() { Value = s.Id.ToString(), Text = s.Name });
             return View();
+        }
+
+        [HttpPost] 
+        public ActionResult CreateProduct(Products obj)
+        {
+            if (!ModelState.IsValid)
+                return HttpNotFound();
+            _productsRepository.InsertProduct(obj); 
+            return RedirectToAction("CreateProduct");
         }
     }
 }
